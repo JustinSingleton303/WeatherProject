@@ -9,7 +9,12 @@ app.get('/', (req, res) => {
 
   const url = "https://api.openweathermap.org/data/2.5/weather?q=denver&units=imperial&appid=579a6c8b76122bf5319c2f49efbb9867";
   https.get(url, (resp)=>{
-    console.log(resp);
+    console.log(resp.statusCode);
+    resp.on("data", (data)=>{
+      const weatherData = JSON.parse(data);
+      const localTemp = weatherData.main.temp;
+      console.log(localTemp);
+    });
   });
 
   res.send("Hello there!");
