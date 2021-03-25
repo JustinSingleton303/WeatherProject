@@ -13,7 +13,8 @@ app.get('/', (req, res) => {
     resp.on("data", (data)=>{
       const weatherData = JSON.parse(data);
       const localTemp = weatherData.main.temp;
-      console.log(localTemp);
+      const description = weatherData.weather[0].description;
+      console.log(localTemp + " " + description);
     });
   });
 
