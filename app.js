@@ -15,10 +15,11 @@ app.get('/', (req, res) => {
       const localTemp = weatherData.main.temp;
       const description = weatherData.weather[0].description;
       console.log(localTemp + " " + description);
+      res.send("The temperature in denver is " + localTemp + " Degrees fahrenheit.");
     });
   });
 
-  res.send("Hello there!");
+  //res.send("Hello there!");
 });
 
 app.listen(port, ()=>{
